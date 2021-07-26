@@ -34,6 +34,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => data.results)
 					.then(information => setStore({ vehicles: information }))
 					.catch(error => console.log(error));
+			},
+			addFavorite: favorite => {
+				let newFavorites = getStore().favorites;
+				let found = newFavorites.find(item => item == favorite);
+				if (found) {
+					newFavorites = newFavorites.filter(item => item != favorite);
+				} else {
+					newFavorites = [...newFavorites, favorite];
+				}
+				setStore({ favorites: newFavorites });
 			}
 		}
 	};

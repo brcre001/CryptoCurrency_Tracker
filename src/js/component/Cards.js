@@ -1,11 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { propTypes } from "react-bootstrap/esm/Image";
+import { Context } from "../store/appContext.js";
 
 export const Cards = props => {
-	const [favorite, setFavorite] = useState(true);
+	const [found, setFound] = useState(false);
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		let position = store.favorites.find(item => item == props.name);
+		if (position) {
+			setFound(true);
+		} else {
+			setFound(false);
+		}
+	});
+
+	const handleFavorite = favorite => {
+		actions.addFavorite(favorite);
+	};
 
 	return (
 		<Card style={{ width: "18rem" }} className="col-2 m-3 p-0">
@@ -18,8 +33,8 @@ export const Cards = props => {
 						Learn More!
 					</Button>
 				</Link>
-				<Button variant="outline-warning" className="float-right" onClick={() => setFavorite(!favorite)}>
-					{favorite ? <i className="far fa-heart" /> : <i className="fas fa-heart" />}
+				<Button variant="outline-warning" className="float-right" onClick={() => handleFavorite(props.name)}>
+					{found ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 				</Button>
 			</Card.Body>
 		</Card>
