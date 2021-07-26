@@ -8,14 +8,13 @@ export const Single = props => {
 	const params = useParams();
 	return (
 		<div className="jumbotron">
+			<img />
 			<h1 className="display-4">This will show the demo element: General Element</h1>
 
 			<hr className="my-4" />
 
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
+				<button className="btn btn-primary btn-lg text-center justify-content-center">Back home</button>
 			</Link>
 		</div>
 	);
