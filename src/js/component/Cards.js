@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 import { propTypes } from "react-bootstrap/esm/Image";
 
 export const Cards = props => {
@@ -12,9 +13,11 @@ export const Cards = props => {
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>
 				<Card.Text>This is a starwars object</Card.Text>
-				<Button variant="outline-primary" className="float-left">
-					Learn More!
-				</Button>
+				<Link to="/single/">
+					<Button variant="outline-primary" className="float-left">
+						Learn More!
+					</Button>
+				</Link>
 				<Button variant="outline-warning" className="float-right" onClick={() => setFavorite(!favorite)}>
 					{favorite ? <i className="far fa-heart" /> : <i className="fas fa-heart" />}
 				</Button>
