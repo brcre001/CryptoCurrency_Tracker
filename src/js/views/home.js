@@ -6,19 +6,26 @@ import "../../styles/home.scss";
 export const Home = () => {
 	// Accessing files from flux to appContext
 	const data = useContext(Context);
-	console.log(data);
 
 	return (
-		<div className="text-center mt-5">
+		<div className="mt-3">
 			<h1>Characters</h1>
-			<div className="d-flex row p-3" />
+			<div className="d-flex row p-3">
+				{data.store.people.map((item, index) => {
+					return <Cards key={index} name={item.name} />;
+				})}
+			</div>
 			<h1>Planets</h1>
-			<div>
-				<Cards />
+			<div className="d-flex row p-3">
+				{data.store.planets.map((item, index) => {
+					return <Cards key={index} name={item.name} />;
+				})}
 			</div>
 			<h1>Vehicles</h1>
-			<div>
-				<Cards />
+			<div className="d-flex row p-3">
+				{data.store.vehicles.map((item, index) => {
+					return <Cards key={index} name={item.name} />;
+				})}
 			</div>
 		</div>
 	);

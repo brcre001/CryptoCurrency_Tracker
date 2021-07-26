@@ -10,8 +10,8 @@ export const Cards = props => {
 		<Card style={{ width: "18rem" }} className="col-2 m-3 p-0">
 			<Card.Img variant="top" src="holder.js/400px200" />
 			<Card.Body>
-				<Card.Title>{props.title}</Card.Title>
-				<Card.Text>{props.body}</Card.Text>
+				<Card.Title>{props.name}</Card.Title>
+				<Card.Text>This is a starwars object</Card.Text>
 				<Button variant="outline-primary" className="float-left">
 					Learn More!
 				</Button>
@@ -24,6 +24,5 @@ export const Cards = props => {
 };
 
 Cards.propTypes = {
-	title: PropTypes.string,
-	body: PropTypes.string
+	name: PropTypes.string
 };
