@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
+	const data = useContext(Context);
 	return (
 		<nav className="navbar navbar-dark bg-dark sticky-top">
 			<Link to="/">
