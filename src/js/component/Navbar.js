@@ -16,7 +16,11 @@ export const Navbar = () => {
 				<span className="navbar-brand mb-0 h1">STARWARS</span>
 			</Link>
 			<div className="ml-auto">
-				<DropdownButton align="end" title="Favorites" id="dropdown-menu-align-right" variant="success">
+				<DropdownButton
+					align="end"
+					title={`Favorites (${store.favorites.length})`}
+					id="dropdown-menu-align-right"
+					variant="success">
 					{store.favorites.map((item, index) => {
 						return (
 							<Dropdown.Item key={index} eventKey={index}>
