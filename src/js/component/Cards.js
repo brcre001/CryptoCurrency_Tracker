@@ -23,7 +23,7 @@ export const Cards = props => {
 	};
 
 	return (
-		<Card style={{ width: "18rem" }} className="col-2 m-3 p-0">
+		<Card style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "22rem" }} className="col-2 m-3 p-0">
 			<Card.Img variant="top" src="https://dummyimage.com/400x200" />
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>

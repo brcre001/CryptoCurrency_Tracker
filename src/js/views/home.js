@@ -8,21 +8,21 @@ export const Home = () => {
 	const { store } = useContext(Context);
 
 	return (
-		<div className="mt-3">
+		<div className="mt-3 px-5">
 			<h1>Characters</h1>
-			<div className="d-flex row p-3 w-100 justify-content-center">
+			<div className="d-flex flex-row w-100 overflow-auto">
 				{store.people.map((item, index) => {
 					return <Cards key={index} name={item.name} />;
 				})}
 			</div>
 			<h1>Planets</h1>
-			<div className="d-flex row p-3 w-100 justify-content-center">
+			<div className="d-flex flex-row w-100 overflow-auto">
 				{store.planets.map((item, index) => {
 					return <Cards key={index} name={item.name} />;
 				})}
 			</div>
 			<h1>Vehicles</h1>
-			<div className="d-flex row p-3 w-100 justify-content-center">
+			<div className="d-flex flex-row w-100 overflow-auto">
 				{store.vehicles.map((item, index) => {
 					return <Cards key={index} name={item.name} />;
 				})}
