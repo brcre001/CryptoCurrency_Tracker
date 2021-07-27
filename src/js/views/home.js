@@ -5,7 +5,7 @@ import "../../styles/home.scss";
 
 export const Home = () => {
 	// Accessing files from flux to appContext
-	const { store, actions } = useContext(Context);
+	const { store } = useContext(Context);
 
 	return (
 		<div className="mt-3">

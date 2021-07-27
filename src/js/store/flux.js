@@ -35,13 +35,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(information => setStore({ vehicles: information }))
 					.catch(error => console.log(error));
 			},
-			addFavorite: favorite => {
+			addFavorite: favoriteName => {
 				let newFavorites = getStore().favorites;
-				let found = newFavorites.find(item => item == favorite);
+				let found = newFavorites.find(item => item == favoriteName);
 				if (found) {
-					newFavorites = newFavorites.filter(item => item != favorite);
+					newFavorites = newFavorites.filter(item => item != favoriteName);
 				} else {
-					newFavorites = [...newFavorites, favorite];
+					newFavorites = [...newFavorites, favoriteName];
 				}
 				setStore({ favorites: newFavorites });
 			}

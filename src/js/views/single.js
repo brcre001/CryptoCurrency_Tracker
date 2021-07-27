@@ -4,11 +4,21 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Single = props => {
-	const data = useContext(Context);
+	const { store, action } = useContext(Context);
 	const params = useParams();
+
+	useEffect(() => dataForPage(params.theid), []);
+
+	let dataForPage = item => {
+		console.log(item);
+		console.log(store.people);
+		let data = store.people.find(element => element.name == item);
+		console.log(data);
+	};
+
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: General Element</h1>
+			<h1 className="display-4">This will show the demo element: {params.theid}</h1>
 
 			<hr className="my-4" />
 

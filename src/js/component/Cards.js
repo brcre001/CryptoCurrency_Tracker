@@ -28,7 +28,7 @@ export const Cards = props => {
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>
 				<Card.Text>This is a starwars object</Card.Text>
-				<Link to="/single/">
+				<Link to={`/single/people/${props.name}`}>
 					<Button variant="outline-primary" className="float-left">
 						Learn More!
 					</Button>
