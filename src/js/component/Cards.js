@@ -27,8 +27,29 @@ export const Cards = props => {
 			<Card.Img variant="top" src="https://dummyimage.com/400x200" />
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>
-				<Card.Text>This is a starwars object</Card.Text>
-				<Link to={`/single/people/${props.name}`}>
+				{props.type == "people" ? (
+					<>
+						<Card.Text>Gender: {props.gender}</Card.Text>
+						<Card.Text>Hair Color: {props.haircolor}</Card.Text>
+						<Card.Text>Eye Color: {props.eyecolor}</Card.Text>
+					</>
+				) : props.type == "planets" ? (
+					<>
+						<Card.Text>Climate: {props.climate}</Card.Text>
+						<Card.Text>Gravity: {props.gravity}</Card.Text>
+						<Card.Text>Terrain: {props.terrain}</Card.Text>
+					</>
+				) : props.type == "vehicles" ? (
+					<>
+						<Card.Text>Manufacturer: {props.manufacturer}</Card.Text>
+						<Card.Text>Cargo Capacity: {props.cargocapacity}</Card.Text>
+						<Card.Text>Model: {props.model}</Card.Text>
+					</>
+				) : (
+					<Card.Text>This {props.type} does not exist!</Card.Text>
+				)}
+
+				<Link to={`/single/${props.type}/${props.name}`}>
 					<Button variant="outline-primary" className="float-left">
 						Learn More!
 					</Button>
@@ -42,5 +63,15 @@ export const Cards = props => {
 };
 
 Cards.propTypes = {
-	name: PropTypes.string
+	name: PropTypes.string,
+	type: PropTypes.string,
+	gender: PropTypes.string,
+	haircolor: PropTypes.string,
+	eyecolor: PropTypes.string,
+	climate: PropTypes.string,
+	gravity: PropTypes.string,
+	terrain: PropTypes.string,
+	manufacturer: PropTypes.string,
+	cargocapacity: PropTypes.string,
+	model: PropTypes.string
 };
