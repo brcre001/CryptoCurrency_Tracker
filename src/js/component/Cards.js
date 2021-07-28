@@ -49,7 +49,7 @@ export const Cards = props => {
 					<Card.Text>This {props.type} does not exist!</Card.Text>
 				)}
 
-				<Link to={`/single/${props.type}/${props.name}`}>
+				<Link to={`/single/${props.type}/${props.index}`}>
 					<Button variant="outline-primary" className="float-left">
 						Learn More!
 					</Button>
@@ -64,6 +64,7 @@ export const Cards = props => {
 
 Cards.propTypes = {
 	name: PropTypes.string,
+	index: PropTypes.number,
 	type: PropTypes.string,
 	gender: PropTypes.string,
 	haircolor: PropTypes.string,

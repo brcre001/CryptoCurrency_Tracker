@@ -15,6 +15,7 @@ export const Home = () => {
 					return (
 						<Cards
 							key={index}
+							index={index}
 							name={item.name}
 							type="people"
 							gender={item.gender}
@@ -30,6 +31,7 @@ export const Home = () => {
 					return (
 						<Cards
 							key={index}
+							index={index}
 							name={item.name}
 							type="planets"
 							climate={item.climate}
@@ -45,6 +47,7 @@ export const Home = () => {
 					return (
 						<Cards
 							key={index}
+							index={index}
 							name={item.name}
 							type="vehicles"
 							manufacturer={item.manufacturer}
