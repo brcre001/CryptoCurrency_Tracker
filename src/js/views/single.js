@@ -17,18 +17,24 @@ export const Single = props => {
 					<h3>Gender: {data.gender}</h3>
 					<h3>Hair Color: {data.hair_color}</h3>
 					<h3>Eye Color: {data.eye_color}</h3>
+					<h3>Skin Color: {data.skin_color}</h3>
+					<h3>Birth Year: {data.birth_year}</h3>
 				</div>
 			) : params.type == "planets" ? (
 				<div>
 					<h3>Climate: {data.climate}</h3>
 					<h3>Gravity: {data.gravity}</h3>
 					<h3>Terrain: {data.terrain}</h3>
+					<h3>Orbital Period: {data.orbital_period}</h3>
+					<h3>Population: {data.population}</h3>
 				</div>
 			) : params.type == "vehicles" ? (
 				<div>
 					<h3>Manufacturer: {data.manufacturer}</h3>
 					<h3>Cargo Capacity: {data.cargo_capacity}</h3>
 					<h3>Model: {data.model}</h3>
+					<h3>Cost in Credits: {data.cost_in_credits}</h3>
+					<h3>Length: {data.length}</h3>
 				</div>
 			) : (
 				<h3>This {data.type} does not exist</h3>
