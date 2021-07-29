@@ -23,7 +23,7 @@ export const Cards = props => {
 	};
 
 	return (
-		<Card style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "22rem" }} className="col-2 m-3 p-0">
+		<Card style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "30rem" }} className="col-2 m-3 p-0">
 			<Card.Img variant="top" src="https://dummyimage.com/400x200" />
 			<Card.Body>
 				<Card.Title>{props.name}</Card.Title>
@@ -48,16 +48,20 @@ export const Cards = props => {
 				) : (
 					<Card.Text>This {props.type} does not exist!</Card.Text>
 				)}
-
+			</Card.Body>
+			<Card.Footer className="border-0 bg-white">
 				<Link to={`/single/${props.type}/${props.index}`}>
-					<Button variant="outline-primary" className="float-left">
+					<Button variant="outline-primary" className="float-left align-bottom">
 						Learn More!
 					</Button>
 				</Link>
-				<Button variant="outline-warning" className="float-right" onClick={() => handleFavorite(props.name)}>
+				<Button
+					variant="outline-warning"
+					className="float-right align-bottom"
+					onClick={() => handleFavorite(props.name)}>
 					{found ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 				</Button>
-			</Card.Body>
+			</Card.Footer>
 		</Card>
 	);
 };
