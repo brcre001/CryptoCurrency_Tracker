@@ -51,14 +51,11 @@ export const Cards = props => {
 			</Card.Body>
 			<Card.Footer className="border-0 bg-white">
 				<Link to={`/single/${props.type}/${props.index}`}>
-					<Button variant="outline-primary" className="float-left align-bottom">
+					<Button variant="outline-primary" className="float-left">
 						Learn More!
 					</Button>
 				</Link>
-				<Button
-					variant="outline-warning"
-					className="float-right align-bottom"
-					onClick={() => handleFavorite(props.name)}>
+				<Button variant="outline-warning" className="float-right" onClick={() => handleFavorite(props.name)}>
 					{found ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 				</Button>
 			</Card.Footer>
