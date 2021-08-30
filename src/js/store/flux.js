@@ -1,3 +1,5 @@
+const apiURL = process.env.API_HOST;
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -15,23 +17,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			loadCharacters: () => {
-				fetch("https://swapi.dev/api/people/")
+				fetch(`${apiURL}/people`)
 					.then(response => response.json())
-					.then(data => data.results)
+					.then(data => data)
 					.then(information => setStore({ people: information }))
 					.catch(error => console.log(error));
 			},
 			loadPlanets: () => {
-				fetch("https://swapi.dev/api/planets")
+				fetch(`${apiURL}/planet`)
 					.then(response => response.json())
-					.then(data => data.results)
+					.then(data => data)
 					.then(information => setStore({ planets: information }))
 					.catch(error => console.log(error));
 			},
 			loadVehicles: () => {
-				fetch("https://swapi.dev/api/vehicles")
+				fetch(`${apiURL}/vehicle`)
 					.then(response => response.json())
-					.then(data => data.results)
+					.then(data => data)
 					.then(information => setStore({ vehicles: information }))
 					.catch(error => console.log(error));
 			},
@@ -44,6 +46,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					newFavorites = [...newFavorites, favoriteName];
 				}
 				setStore({ favorites: newFavorites });
+			},
+
+			createToken: async (email, password) => {
+				// When we return the token the login.js will be able to history.push
+				return "sdlkjfas";
 			}
 		}
 	};
