@@ -6,7 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [],
 			vehicles: [],
-			favorites: []
+			favorites: [],
+			currentUser: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -19,21 +20,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadCharacters: () => {
 				fetch(`${apiURL}/people`)
 					.then(response => response.json())
-					.then(data => data)
 					.then(information => setStore({ people: information }))
 					.catch(error => console.log(error));
 			},
 			loadPlanets: () => {
 				fetch(`${apiURL}/planet`)
 					.then(response => response.json())
-					.then(data => data)
 					.then(information => setStore({ planets: information }))
 					.catch(error => console.log(error));
 			},
 			loadVehicles: () => {
 				fetch(`${apiURL}/vehicle`)
 					.then(response => response.json())
-					.then(data => data)
 					.then(information => setStore({ vehicles: information }))
 					.catch(error => console.log(error));
 			},
@@ -48,9 +46,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favorites: newFavorites });
 			},
 
-			createToken: async (email, password) => {
+			getToken: async (email, password) => {
 				// When we return the token the login.js will be able to history.push
-				return "sdlkjfas";
+				let response = await fetch(`${apiURL}/token`, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ email, password })
+				});
+				if (!response.ok) {
+					throw Error("Invalid credentials");
+				}
+				let data = await response.json();
+				localStorage.setItem("jwt-token", data.token);
+				setStore({ currentUser: { email, token: data.token } });
+				return data.token;
+			},
+			logout: () => {
+				localStorage.removeItem("jwt-token");
+				setStore({ currentUser: null });
 			}
 		}
 	};

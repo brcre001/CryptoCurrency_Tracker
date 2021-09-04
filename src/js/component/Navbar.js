@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { Context } from "../store/appContext.js";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
 
 	const handleFavorite = favorite => {
 		actions.addFavorite(favorite);
@@ -40,6 +41,20 @@ export const Navbar = () => {
 					})}
 				</DropdownButton>
 			</div>
+			{!store.currentUser ? (
+				<Link className="btn btn-primary" to="/login">
+					Login
+				</Link>
+			) : (
+				<button
+					className="btn btn-primary"
+					onClick={() => {
+						actions.logout();
+						history.push("/");
+					}}>
+					Logout
+				</button>
+			)}
 		</nav>
 	);
 };

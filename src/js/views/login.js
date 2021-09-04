@@ -6,6 +6,7 @@ import { Context } from "../store/appContext.js";
 
 export const Login = () => {
 	const { actions, store } = useContext(Context);
+	const [error, setError] = useState(null);
 	const history = useHistory();
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
@@ -15,12 +16,17 @@ export const Login = () => {
 			<div className="fadeIn first">
 				<img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
 			</div>
-
+			{error && <div className="alert alert-danger">{error}</div>}
 			<form
 				onSubmit={async e => {
 					e.preventDefault();
-					const token = await actions.createToken(username, password);
-					if (token) history.push("/");
+					setError(null);
+					try {
+						const token = await actions.getToken(username, password);
+						if (token) history.push("/");
+					} catch (tokenError) {
+						setError(tokenError.message);
+					}
 				}}>
 				<input
 					onChange={e => setUsername(e.target.value)}
