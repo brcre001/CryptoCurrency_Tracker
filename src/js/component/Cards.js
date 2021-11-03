@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Card, Button } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import { propTypes } from "react-bootstrap/esm/Image";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
 export const Cards = props => {
@@ -10,7 +9,7 @@ export const Cards = props => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
-		let position = store.favorites.find(item => item == props.name);
+		let position = store.favorites.find(item => item == props.coinObj.name);
 		if (position) {
 			setFound(true);
 		} else {
@@ -23,39 +22,22 @@ export const Cards = props => {
 	};
 
 	return (
-		<Card style={{ minWidth: "18rem", maxWidth: "18rem", minHeight: "30rem" }} className="col-2 m-3 p-0">
-			<Card.Img variant="top" src="https://dummyimage.com/400x200" />
+		<Card className="col-12 col-lg-3 col-md-4 m-3 p-0">
 			<Card.Body>
-				<Card.Title>{props.name}</Card.Title>
-				{props.type == "people" ? (
-					<>
-						<Card.Text>Gender: {props.gender}</Card.Text>
-						<Card.Text>Hair Color: {props.haircolor}</Card.Text>
-						<Card.Text>Eye Color: {props.eyecolor}</Card.Text>
-					</>
-				) : props.type == "planets" ? (
-					<>
-						<Card.Text>Climate: {props.climate}</Card.Text>
-						<Card.Text>Gravity: {props.gravity}</Card.Text>
-						<Card.Text>Terrain: {props.terrain}</Card.Text>
-					</>
-				) : props.type == "vehicles" ? (
-					<>
-						<Card.Text>Manufacturer: {props.manufacturer}</Card.Text>
-						<Card.Text>Cargo Capacity: {props.cargocapacity}</Card.Text>
-						<Card.Text>Model: {props.model}</Card.Text>
-					</>
-				) : (
-					<Card.Text>This {props.type} does not exist!</Card.Text>
-				)}
+				<Card.Title>{props.coinObj.name}</Card.Title>
+				<Card.Text>Symbol: {props.coinObj.symbol}</Card.Text>
+				<Card.Text>Price: ${props.coinObj.price_usd}</Card.Text>
 			</Card.Body>
 			<Card.Footer className="border-0 bg-white">
-				<Link to={`/single/${props.type}/${props.index}`}>
+				<Link to={`/coin/${props.coinObj.id}`}>
 					<Button variant="outline-primary" className="float-left">
 						Learn More!
 					</Button>
 				</Link>
-				<Button variant="outline-warning" className="float-right" onClick={() => handleFavorite(props.name)}>
+				<Button
+					variant="outline-warning"
+					className="float-right"
+					onClick={() => handleFavorite(props.coinObj.name)}>
 					{found ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 				</Button>
 			</Card.Footer>
@@ -64,16 +46,5 @@ export const Cards = props => {
 };
 
 Cards.propTypes = {
-	name: PropTypes.string,
-	index: PropTypes.number,
-	type: PropTypes.string,
-	gender: PropTypes.string,
-	haircolor: PropTypes.string,
-	eyecolor: PropTypes.string,
-	climate: PropTypes.string,
-	gravity: PropTypes.string,
-	terrain: PropTypes.string,
-	manufacturer: PropTypes.string,
-	cargocapacity: PropTypes.string,
-	model: PropTypes.string
+	coinObj: PropTypes.object
 };

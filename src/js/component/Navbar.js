@@ -37,7 +37,7 @@ export const Navbar = () => {
 					})}
 				</DropdownButton>
 			</div>
-			{!store.currentUser ? (
+			{/* {!store.currentUser ? (
 				<Link className="btn btn-primary ml-2" to="/login">
 					Login
 				</Link>
@@ -50,7 +50,7 @@ export const Navbar = () => {
 					}}>
 					Logout
 				</button>
-			)}
+			)} */}
 		</nav>
 	);
 };

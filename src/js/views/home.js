@@ -10,19 +10,9 @@ export const Home = () => {
 	return (
 		<div className="mt-3 px-5">
 			<h1>Coins</h1>
-			<div className="d-flex flex-row w-100 overflow-auto">
+			<div className="d-flex w-100 row justify-content-center">
 				{store.coins.map((item, index) => {
-					return (
-						<Cards
-							key={index}
-							index={index}
-							name={item.name}
-							type="people"
-							gender={item.gender}
-							haircolor={item.hair_color}
-							eyecolor={item.eye_color}
-						/>
-					);
+					return <Cards key={index} coinObj={item} />;
 				})}
 			</div>
 		</div>

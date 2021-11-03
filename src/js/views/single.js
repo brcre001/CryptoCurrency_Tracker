@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import PropTypes from "prop-types";
+import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Single = props => {
+export const Single = () => {
 	const { store, action } = useContext(Context);
+	const params = useParams();
 
-	let data = store[params.theid];
+	let data = store.coins.find(item => item.id == params.theid);
 
 	return (
 		<div className="jumbotron text-center">
@@ -18,8 +18,4 @@ export const Single = props => {
 			</Link>
 		</div>
 	);
-};
-
-Single.propTypes = {
-	match: PropTypes.object
 };
