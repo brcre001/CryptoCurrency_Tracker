@@ -22,11 +22,12 @@ export const Cards = props => {
 	};
 
 	return (
-		<Card className="col-12 col-lg-3 col-md-4 m-3 p-0">
+		<Card className="col-12 col-md-4 col-lg-3 m-3 p-0">
 			<Card.Body>
 				<Card.Title>{props.coinObj.name}</Card.Title>
 				<Card.Text>Symbol: {props.coinObj.symbol}</Card.Text>
 				<Card.Text>Price: ${props.coinObj.price_usd}</Card.Text>
+				<Card.Text>Rank: {props.coinObj.rank}</Card.Text>
 			</Card.Body>
 			<Card.Footer className="border-0 bg-white">
 				<Link to={`/coin/${props.coinObj.id}`}>

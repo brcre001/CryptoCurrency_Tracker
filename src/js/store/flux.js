@@ -29,26 +29,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					newFavorites = [...newFavorites, favoriteName];
 				}
 				setStore({ favorites: newFavorites });
-			},
-
-			getToken: async (email, password) => {
-				// When we return the token the login.js will be able to history.push
-				let response = await fetch(`${apiURL}/token`, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ email, password })
-				});
-				if (!response.ok) {
-					throw Error("Invalid credentials");
-				}
-				let data = await response.json();
-				localStorage.setItem("jwt-token", data.token);
-				setStore({ currentUser: { email, token: data.token } });
-				return data.token;
-			},
-			logout: () => {
-				localStorage.removeItem("jwt-token");
-				setStore({ currentUser: null });
 			}
 		}
 	};
