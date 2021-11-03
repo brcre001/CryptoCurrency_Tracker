@@ -38,12 +38,12 @@ export const Navbar = () => {
 				</DropdownButton>
 			</div>
 			{!store.currentUser ? (
-				<Link className="btn btn-primary" to="/login">
+				<Link className="btn btn-primary ml-2" to="/login">
 					Login
 				</Link>
 			) : (
 				<button
-					className="btn btn-primary"
+					className="btn btn-primary ml-2"
 					onClick={() => {
 						actions.logout();
 						history.push("/");
