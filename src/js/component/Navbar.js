@@ -15,12 +15,8 @@ export const Navbar = () => {
 		<nav className="navbar navbar-dark bg-dark sticky-top">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
-					<img
-						src="https://www.freepnglogos.com/uploads/star-wars-logo-31.png"
-						width="50"
-						alt="star wars logo"
-					/>{" "}
-					STARWARS BLOG
+					<i className="fab fa-bitcoin" />
+					Crypto Tracker
 				</span>
 			</Link>
 			<div className="ml-auto">
