@@ -1,38 +1,23 @@
-const apiURL = process.env.API_HOST;
+// const apiURL = process.env.API_HOST;
+const apiURL = "https://api.coinlore.net/api/tickers/";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			people: [],
-			planets: [],
-			vehicles: [],
+			coins: [],
 			favorites: [],
 			currentUser: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			initializeData: () => {
-				getActions().loadCharacters();
-				getActions().loadPlanets();
-				getActions().loadVehicles();
+				getActions().loadAssets();
 			},
 
-			loadCharacters: () => {
-				fetch(`${apiURL}/people`)
+			loadAssets: () => {
+				fetch(apiURL)
 					.then(response => response.json())
-					.then(information => setStore({ people: information }))
-					.catch(error => console.log(error));
-			},
-			loadPlanets: () => {
-				fetch(`${apiURL}/planet`)
-					.then(response => response.json())
-					.then(information => setStore({ planets: information }))
-					.catch(error => console.log(error));
-			},
-			loadVehicles: () => {
-				fetch(`${apiURL}/vehicle`)
-					.then(response => response.json())
-					.then(information => setStore({ vehicles: information }))
+					.then(information => setStore({ coins: information["data"] }))
 					.catch(error => console.log(error));
 			},
 			addFavorite: favoriteName => {
