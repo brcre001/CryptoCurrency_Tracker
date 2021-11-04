@@ -9,7 +9,7 @@ export const Cards = props => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
-		let position = store.favorites.find(item => item == props.coinObj.name);
+		let position = store.favorites.find(item => item.name == props.coinObj.name);
 		if (position) {
 			setFound(true);
 		} else {
@@ -35,10 +35,7 @@ export const Cards = props => {
 						Learn More!
 					</Button>
 				</Link>
-				<Button
-					variant="outline-warning"
-					className="float-right"
-					onClick={() => handleFavorite(props.coinObj.name)}>
+				<Button variant="outline-warning" className="float-right" onClick={() => handleFavorite(props.coinObj)}>
 					{found ? <i className="fas fa-heart" /> : <i className="far fa-heart" />}
 				</Button>
 			</Card.Footer>

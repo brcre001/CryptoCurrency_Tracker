@@ -6,7 +6,6 @@ import "../../styles/home.scss";
 export const Home = () => {
 	// Accessing files from flux to appContext
 	const { store } = useContext(Context);
-	console.log(store.coins);
 	return (
 		<div className="mt-3 px-5">
 			<div className="d-flex justify-content-center">

@@ -29,10 +29,14 @@ export const Navbar = () => {
 					{store.favorites.map((item, index) => {
 						return (
 							<Dropdown.Item key={index} eventKey={index}>
-								{item}{" "}
-								<button onClick={() => handleFavorite(item)} className="btn btn-danger float-right">
-									<i className="fas fa-trash-alt" />
-								</button>
+								<div className="d-flex">
+									<div className="mr-2">
+										<Link to={`/coin/${item.id}`}>{item.name}</Link>
+									</div>
+									<button onClick={() => handleFavorite(item)} className="btn btn-danger ml-auto">
+										<i className="fas fa-trash-alt" />
+									</button>
+								</div>
 							</Dropdown.Item>
 						);
 					})}

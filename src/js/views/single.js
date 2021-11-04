@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -7,8 +7,6 @@ export const Single = () => {
 	const params = useParams();
 
 	let data = store.coins.find(item => item.id == params.theid);
-
-	console.log(data.msupply);
 
 	return (
 		<div className="d-flex justify-content-center">

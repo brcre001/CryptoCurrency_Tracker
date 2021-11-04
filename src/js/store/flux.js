@@ -20,13 +20,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(information => setStore({ coins: information["data"] }))
 					.catch(error => console.log(error));
 			},
-			addFavorite: favoriteName => {
+			addFavorite: coinObject => {
 				let newFavorites = getStore().favorites;
-				let found = newFavorites.find(item => item == favoriteName);
+				let found = newFavorites.find(item => item.name == coinObject.name);
 				if (found) {
-					newFavorites = newFavorites.filter(item => item != favoriteName);
+					newFavorites = newFavorites.filter(item => item.name != coinObject.name);
 				} else {
-					newFavorites = [...newFavorites, favoriteName];
+					newFavorites = [...newFavorites, coinObject];
 				}
 				setStore({ favorites: newFavorites });
 			}
