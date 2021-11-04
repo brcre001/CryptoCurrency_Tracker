@@ -22,7 +22,7 @@ export const Cards = props => {
 	};
 
 	return (
-		<Card className="col-12 col-md-4 col-lg-3 m-3 p-0">
+		<Card className="col-12 col-md-4 col-lg-3 m-3 p-0 bg-white">
 			<Card.Body>
 				<Card.Title>{props.coinObj.name}</Card.Title>
 				<Card.Text>Symbol: {props.coinObj.symbol}</Card.Text>

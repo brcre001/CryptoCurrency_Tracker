@@ -9,7 +9,9 @@ export const Home = () => {
 	console.log(store.coins);
 	return (
 		<div className="mt-3 px-5">
-			<h1>Coins</h1>
+			<div className="d-flex justify-content-center">
+				<h1 className="p-0">Assets</h1>
+			</div>
 			<div className="d-flex w-100 row justify-content-center">
 				{store.coins.map((item, index) => {
 					return <Cards key={index} coinObj={item} />;

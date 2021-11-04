@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import { Context } from "../store/appContext.js";
+import "../../styles/home.scss";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
@@ -14,9 +15,9 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-dark bg-dark sticky-top">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">
+				<span className="navbar-brand mb-0">
 					<i className="fab fa-bitcoin" />
-					Crypto Tracker
+					{` Crypto Tracker`}
 				</span>
 			</Link>
 			<div className="ml-auto">
