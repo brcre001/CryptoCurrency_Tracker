@@ -25,7 +25,7 @@ export const Navbar = () => {
 					align="end"
 					title={`Favorites (${store.favorites.length})`}
 					id="dropdown-menu-align-right"
-					variant="success">
+					variant="warning">
 					{store.favorites.map((item, index) => {
 						return (
 							<Dropdown.Item key={index} eventKey={index}>
