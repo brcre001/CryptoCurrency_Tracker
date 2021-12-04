@@ -23,9 +23,24 @@ export const Single = () => {
 					<p>Price: ${data.price_usd}</p>
 					<p>Rank: {data.rank}</p>
 					<br />
-					<p>Percent Change (in last 1h): {data.percent_change_1h}</p>
-					<p>Percent Change (in last 24h): {data.percent_change_24h}</p>
-					<p>Percent Change (in last 7d): {data.percent_change_7d}</p>
+					<p>
+						Percent Change (in last 1h):{" "}
+						<span className={data.percent_change_1h.includes("-") ? "text-danger" : "text-success"}>
+							{data.percent_change_1h}
+						</span>
+					</p>
+					<p>
+						Percent Change (in last 24h):{" "}
+						<span className={data.percent_change_24h.includes("-") ? "text-danger" : "text-success"}>
+							{data.percent_change_24h}
+						</span>
+					</p>
+					<p>
+						Percent Change (in last 7d):{" "}
+						<span className={data.percent_change_7d.includes("-") ? "text-danger" : "text-success"}>
+							{data.percent_change_7d}
+						</span>
+					</p>
 					<br />
 					<p>Current Supply: {data.tsupply}</p>
 					<p>Max Supply: {data.msupply == "" ? "N/A" : data.msupply}</p>

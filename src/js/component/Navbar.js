@@ -30,7 +30,7 @@ export const Navbar = () => {
 						return (
 							<Dropdown.Item key={index} eventKey={index}>
 								<div className="d-flex">
-									<div className="mr-2">
+									<div className="mr-2 text-primary">
 										<Link to={`/coin/${item.id}`}>{item.name}</Link>
 									</div>
 									<button onClick={() => handleFavorite(item)} className="btn btn-danger ml-auto">
