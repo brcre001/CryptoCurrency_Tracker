@@ -15,12 +15,14 @@ export const Single = () => {
 
 	return (
 		<div className="d-flex justify-content-center">
-			<div className="bg-secondary p-3 m-3 rounded">
-				<h1 className="display-4 gold">{data.name}</h1>
+			<div className="bg-secondary p-3 m-3 rounded col-11 col-lg-8 col-md-10">
+				<div className="d-flex justify-content-center">
+					<h1 className="display-4 gold align-self-center">{data.name}</h1>
+				</div>
 				<hr className="my-4" />
-				<div className="justify-content-left text-white">
+				<div className="justify-content-left text-white px-4">
 					<p>Symbol: {data.symbol}</p>
-					<p>Price: ${data.price_usd}</p>
+					<p>Current Price: ${data.price_usd}</p>
 					<p>Rank: {data.rank}</p>
 					<br />
 					<p>

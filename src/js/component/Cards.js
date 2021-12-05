@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Card, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
@@ -24,16 +25,16 @@ export const Cards = props => {
 	return (
 		<Card className="col-12 col-md-4 col-lg-3 m-3 p-0 bg-secondary text-white">
 			<Card.Body>
-				<Card.Title className="gold">{props.coinObj.name}</Card.Title>
+				<Card.Title className="gold text-large justify-content-center">{props.coinObj.name}</Card.Title>
 				<hr />
 				<Card.Text>Symbol: {props.coinObj.symbol}</Card.Text>
-				<Card.Text>Price: ${props.coinObj.price_usd}</Card.Text>
+				<Card.Text>Current Price: ${props.coinObj.price_usd}</Card.Text>
 				<Card.Text>Rank: {props.coinObj.rank}</Card.Text>
 			</Card.Body>
 			<Card.Footer className="border-0 bg-secondary">
 				<Link to={`/coin/${props.coinObj.id}`}>
 					<Button variant="primary" className="float-left">
-						Learn More!
+						More info
 					</Button>
 				</Link>
 				<Button variant="warning" className="float-right" onClick={() => handleFavorite(props.coinObj)}>

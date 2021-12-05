@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Cards } from "../component/Cards.js";
+import Alert from "react-bootstrap/Alert";
 import { Context } from "../store/appContext.js";
 import queryString from "query-string";
 import "../../styles/home.scss";
@@ -8,8 +9,6 @@ export const Home = () => {
 	// Accessing files from flux to appContext
 	const { store } = useContext(Context);
 	const [coinsArray, setCoinsArray] = useState(store.coins);
-
-	console.log("These are the coins: ", store.coins);
 
 	useEffect(
 		() => {
@@ -45,16 +44,22 @@ export const Home = () => {
 			</div>
 			<div className="d-flex justify-content-center">
 				<input
-					className="w-50 rounded"
-					placeholder="Search cryptocurrency name here"
+					className="w-75 rounded p-1"
+					placeholder="Search cryptocurrency here"
 					onChange={event => searchHash(event)}
 				/>
 			</div>
-			<div className="d-flex w-100 row justify-content-center">
-				{coinsArray.map((item, index) => {
-					return <Cards key={index} coinObj={item} />;
-				})}
-			</div>
+			{store.coins.length == 0 ? (
+				<Alert variant="warning" className="m-3 text-large text-center">
+					Loading...
+				</Alert>
+			) : (
+				<div className="d-flex w-100 row justify-content-center">
+					{coinsArray.map((item, index) => {
+						return <Cards key={index} coinObj={item} />;
+					})}
+				</div>
+			)}
 		</div>
 	);
 };
